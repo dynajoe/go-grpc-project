@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package admin.v1;
+
+option go_package = "github.com/dynajoe/go-grpc-template/proto/v3";
+
+service OrganizationService {
+  // GetOrganization gets an organization by id.
+  rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
+    option (google.api.http) = {
+      get: "/api/organizations/{organization_id}"
+    };
+  };
+}
+
+message GetOrganizationRequest {
+  string organization_id = 1;
+}
+
+message GetOrganizationResponse {
+  Organization organization = 1;
+}
+
+message Organization {
+  string organization_id = 1;
+  string name = 2;
+}

@@ -1,0 +1,17 @@
+version: v1beta1
+plugins:
+  - name: go
+    out: proto/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: proto/go
+    opt: paths=source_relative,require_unimplemented_servers=false
+  - name: grpc-gateway
+    out: proto/go
+    opt: paths=source_relative
+  - name: openapiv2
+    out: proto/swagger
+    opt: logtostderr=true,allow_merge=true,merge_file_name=api
+  - name: go-json
+    out: proto/go
+    opt: logtostderr=true,allow_unknown=true,orig_name=true,emit_defaults=true
